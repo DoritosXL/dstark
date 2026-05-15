@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'> {
   /** Bold title above the body. */
   title?: React.ReactNode;
   /** Eyebrow / meta line above the title. Sentence-cased lowercase by convention. */
