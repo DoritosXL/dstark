@@ -1,0 +1,79 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Colors" />
+
+# Colors
+
+Apple-leaning, cool, slightly desaturated so everything sits naturally on warm paper. Three families:
+
+- **Ink** — cool gray neutrals. The only color most UI uses.
+- **Paper** — warm off-whites. The canvas.
+- **Brand** — Stark Blue, the one accent.
+- **Semantic** — red / orange / green / purple / yellow for status and focus.
+
+export const Ramp = ({ name, stops }) => (
+  <div style={{ marginBottom: 32 }}>
+    <h4 className="stark-h4" style={{ marginBottom: 12, fontSize: 16 }}>{name}</h4>
+    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${stops.length}, 1fr)`, gap: 6 }}>
+      {stops.map((s) => (
+        <div
+          key={s.name}
+          className="stark-chalk"
+          style={{
+            background: s.value,
+            color: s.dark ? '#fff' : 'var(--fg-1)',
+            borderRadius: 'var(--radius-sm)',
+            '--stark-stroke-w': '1.5px',
+            padding: '12px 10px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            minHeight: 86,
+          }}
+        >
+          <div style={{ font: '600 11px/1 var(--font-mono)' }}>{s.name}</div>
+          <div style={{ font: '500 10px/1 var(--font-mono)', opacity: 0.85 }}>{s.value}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+<Ramp name="Ink — neutrals" stops={[
+  { name: '50',  value: '#F7F7F8' },
+  { name: '100', value: '#EEEEF1' },
+  { name: '200', value: '#DCDCE2' },
+  { name: '300', value: '#BFBFC8' },
+  { name: '400', value: '#95959F', dark: true },
+  { name: '500', value: '#6E6E78', dark: true },
+  { name: '600', value: '#4B4B53', dark: true },
+  { name: '700', value: '#34343A', dark: true },
+  { name: '800', value: '#1F1F23', dark: true },
+  { name: '900', value: '#131317', dark: true },
+]}/>
+
+<Ramp name="Paper — surfaces" stops={[
+  { name: 'raised', value: '#FFFDF8' },
+  { name: 'paper',  value: '#FAF7F1' },
+  { name: 'sunken', value: '#F1ECE2' },
+  { name: 'deep',   value: '#E8E2D4' },
+]}/>
+
+<Ramp name="Brand — Stark Blue" stops={[
+  { name: '50',  value: '#EAF2FF' },
+  { name: '100', value: '#CCDFFF' },
+  { name: '300', value: '#6FA4FF' },
+  { name: '500', value: '#1F6FEB', dark: true },
+  { name: '600', value: '#1858C7', dark: true },
+  { name: '700', value: '#11448F', dark: true },
+]}/>
+
+<Ramp name="Semantic" stops={[
+  { name: 'danger',  value: '#D7443E', dark: true },
+  { name: 'warning', value: '#E8893A', dark: true },
+  { name: 'success', value: '#2E9E64', dark: true },
+  { name: 'info',    value: '#7D5BD6', dark: true },
+  { name: 'focus',   value: '#F2D86A' },
+]}/>
+
+All colors live as CSS custom properties — `--stark-ink-900`, `--brand`, `--success`, etc. The full token list is in `src/styles/tokens.css`.

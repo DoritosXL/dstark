@@ -1,0 +1,378 @@
+/* ============================================================
+   STARK — Colors & Type
+   Lean, refined-cool palette + Mona Sans / Source Serif
+   ============================================================ */
+
+/* ---- Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Lora:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+:root {
+  /* ============================================================
+     COLOR — Lean, cooled and slightly desaturated for chalk feel
+     ============================================================ */
+
+  /* Neutrals — cool grays, very slight warmth in the lightest stops
+     so the chalk/paper read still works on cream surfaces. */
+  --stark-ink-50:  #F7F7F8;
+  --stark-ink-100: #EEEEF1;
+  --stark-ink-200: #DCDCE2;
+  --stark-ink-300: #BFBFC8;
+  --stark-ink-400: #95959F;
+  --stark-ink-500: #6E6E78;
+  --stark-ink-600: #4B4B53;
+  --stark-ink-700: #34343A;
+  --stark-ink-800: #1F1F23;
+  --stark-ink-900: #131317;
+
+  /* Paper — warm off-whites, the canvas of the system */
+  --stark-paper:        #FAF7F1;   /* default surface */
+  --stark-paper-sunken: #F1ECE2;   /* sunk-in / inset surface */
+  --stark-paper-raised: #FFFDF8;   /* raised card surface */
+  --stark-paper-deep:   #E8E2D4;   /* darkest paper, for dividers */
+
+  /* Brand accent — Stark blue (Lean SF Blue, cooled) */
+  --stark-blue-50:  #EAF2FF;
+  --stark-blue-100: #CCDFFF;
+  --stark-blue-300: #6FA4FF;
+  --stark-blue-500: #1F6FEB;   /* default brand */
+  --stark-blue-600: #1858C7;
+  --stark-blue-700: #11448F;
+
+  /* Semantic accents — Lean system colors, calmed */
+  --stark-red-500:    #D7443E;   /* destructive */
+  --stark-red-600:    #B43830;
+  --stark-orange-500: #E8893A;   /* warning */
+  --stark-orange-600: #C76F22;
+  --stark-green-500: #2E9E64;    /* success */
+  --stark-green-600: #1F7A4D;
+  --stark-purple-500:#7D5BD6;    /* info / accent alt */
+  --stark-purple-600:#5F3FB5;
+  --stark-yellow-300:#F2D86A;    /* highlighter / focus */
+
+  /* ============================================================
+     SEMANTIC TOKENS — use these in components, not raw colors above
+     ============================================================ */
+
+  /* Surfaces */
+  --surface-canvas:    var(--stark-paper);
+  --surface-raised:    var(--stark-paper-raised);
+  --surface-sunken:    var(--stark-paper-sunken);
+  --surface-inverse:   var(--stark-ink-900);
+
+  /* Foreground / text */
+  --fg-1: var(--stark-ink-900);   /* primary text */
+  --fg-2: var(--stark-ink-700);   /* secondary text */
+  --fg-3: var(--stark-ink-500);   /* tertiary / meta */
+  --fg-4: var(--stark-ink-400);   /* placeholder / disabled label */
+  --fg-on-inverse: var(--stark-paper);
+
+  /* Borders — the chalky-but-almost-solid ones */
+  --border-strong: var(--stark-ink-900);   /* the signature dark border */
+  --border-medium: var(--stark-ink-700);
+  --border-soft:   var(--stark-ink-300);
+  --border-hairline: var(--stark-paper-deep);
+
+  /* Brand */
+  --brand:         var(--stark-blue-500);
+  --brand-hover:   var(--stark-blue-600);
+  --brand-press:   var(--stark-blue-700);
+  --brand-soft:    var(--stark-blue-50);
+  --on-brand:      #FFFFFF;
+
+  /* Status */
+  --danger:  var(--stark-red-500);
+  --warning: var(--stark-orange-500);
+  --success: var(--stark-green-500);
+  --info:    var(--stark-purple-500);
+  --focus:   var(--stark-yellow-300);
+
+  /* ============================================================
+     TYPE
+     ============================================================ */
+
+  --font-sans:    'Nunito', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif:   'Lora', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Sizes — modest scale, ~1.2 ratio, Comeau-ish */
+  --size-12: 0.75rem;
+  --size-14: 0.875rem;
+  --size-16: 1rem;
+  --size-18: 1.125rem;
+  --size-20: 1.25rem;
+  --size-24: 1.5rem;
+  --size-30: 1.875rem;
+  --size-36: 2.25rem;
+  --size-48: 3rem;
+  --size-60: 3.75rem;
+  --size-72: 4.5rem;
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+  --weight-bold:    700;
+  --weight-black:   800;
+
+  /* Line heights */
+  --lh-tight:   1.1;
+  --lh-snug:    1.25;
+  --lh-normal:  1.5;
+  --lh-relaxed: 1.65;
+
+  /* Letter spacing */
+  --tracking-tight:   -0.02em;
+  --tracking-snug:    -0.01em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.02em;
+  --tracking-caps:    0.06em;
+
+  /* ============================================================
+     SPACING — 4px base
+     ============================================================ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ============================================================
+     RADII
+     ============================================================ */
+  --radius-xs: 3px;
+  --radius-sm: 6px;       /* default — buttons, inputs */
+  --radius-md: 10px;      /* cards */
+  --radius-lg: 16px;      /* large containers */
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+
+  /* ============================================================
+     SHADOWS — the skeuomorphic inset-underline system
+     ============================================================ */
+
+  /* The signature: a soft dark line under the button. Semi-transparent
+     so it relates to the button's color, not a hard black slam. */
+  --shadow-press-1: 0 1px 0 0 rgba(19,19,23,0.78);
+  --shadow-press-2: 0 2px 0 0 rgba(19,19,23,0.82);
+  --shadow-press-3: 0 3px 0 0 rgba(19,19,23,0.86);
+
+  /* Soft ambient drops, paired with the press line for refinement */
+  --shadow-ambient-1: 0 2px 6px rgba(19,19,23,0.06);
+  --shadow-ambient-2: 0 6px 14px rgba(19,19,23,0.09);
+  --shadow-ambient-3: 0 12px 28px rgba(19,19,23,0.10);
+
+  /* The full button shadow — press line + ambient for depth */
+  --shadow-button:       var(--shadow-press-2), var(--shadow-ambient-1);
+  --shadow-button-hover: var(--shadow-press-2), var(--shadow-ambient-2);
+  --shadow-button-press: inset 0 1px 0 0 rgba(19,19,23,0.5), 0 1px 0 0 rgba(19,19,23,0.7);
+
+  /* Cards — ambient + a faint line, no press shadow */
+  --shadow-card: 0 1px 0 0 var(--stark-ink-200), 0 2px 8px rgba(19,19,23,0.04);
+  --shadow-card-hover: 0 2px 0 0 var(--stark-ink-300), 0 10px 28px rgba(19,19,23,0.08);
+
+  /* Focus ring — yellow highlighter */
+  --shadow-focus: 0 0 0 3px rgba(242,216,106,0.55);
+
+  /* ============================================================
+     BORDERS
+     ============================================================ */
+  --border-thin:  1.5px solid var(--border-strong);
+  --border-base:  2px   solid var(--border-strong);
+  --border-bold:  2.5px solid var(--border-strong);
+  --border-soft-thin: 1px solid var(--border-soft);
+
+  /* ============================================================
+     MOTION
+     ============================================================ */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-snap:   cubic-bezier(0.34, 1.56, 0.64, 1);  /* slight overshoot */
+
+  --dur-fast:   120ms;
+  --dur-base:   180ms;
+  --dur-slow:   320ms;
+}
+
+/* ============================================================
+   SEMANTIC TYPE STYLES — apply directly
+   ============================================================ */
+
+.stark-display {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-black);
+  font-size: clamp(2.5rem, 5vw, var(--size-72));
+  line-height: var(--lh-tight);
+  letter-spacing: -0.015em;
+  color: var(--fg-1);
+}
+
+.stark-h1 {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-black);
+  font-size: var(--size-48);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+}
+
+.stark-h2 {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-black);
+  font-size: var(--size-36);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg-1);
+}
+
+.stark-h3 {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-bold);
+  font-size: var(--size-24);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+.stark-h4 {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-semibold);
+  font-size: var(--size-20);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+.stark-lede {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-medium);
+  font-style: italic;
+  font-size: var(--size-20);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+}
+
+.stark-body {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-16);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-1);
+  text-wrap: pretty;
+}
+
+.stark-body-sm {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-regular);
+  font-size: var(--size-14);
+  line-height: var(--lh-normal);
+  color: var(--fg-2);
+}
+
+.stark-meta {
+  font-family: var(--font-sans);
+  font-weight: var(--weight-medium);
+  font-size: var(--size-12);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+.stark-code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-xs);
+  padding: 0.1em 0.4em;
+  color: var(--fg-1);
+}
+
+.stark-pullquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--weight-regular);
+  font-size: var(--size-30);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg-1);
+}
+
+/* ============================================================
+   CHALK BORDER — applied via pseudo-element so ONLY the stroke
+   gets the pencil-opening effect. Backgrounds stay solid.
+
+   Usage:
+     <div class="stark-chalk" style="background:#fff; border-radius:6px;">
+       …
+     </div>
+
+   The element MUST NOT set its own `border` — the chalky border is
+   drawn by ::before. Customize via:
+     --stark-stroke-w  (default 2px)
+     --stark-stroke-c  (default var(--border-strong))
+     --stark-chalk-filter (default url(#stark-chalk) — swap for soft/strong)
+   ============================================================ */
+.stark-chalk {
+  position: relative;
+}
+.stark-chalk::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: var(--stark-stroke-w, 2px) solid var(--stark-stroke-c, var(--border-strong));
+  border-radius: inherit;
+  pointer-events: none;
+  filter: var(--stark-chalk-filter, url(#stark-chalk));
+}
+.stark-chalk--soft   { --stark-chalk-filter: url(#stark-chalk-soft); }
+.stark-chalk--strong { --stark-chalk-filter: url(#stark-chalk-strong); }
+
+/* When an element has a hard underline shadow (button press-line), apply
+   .stark-chalk--solid-bottom alongside .stark-chalk. The chalk pseudo
+   stops drawing its bottom edge and ::after fills it in solid, so the
+   border meets the shadow line cleanly. */
+.stark-chalk--solid-bottom::before {
+  border-bottom-color: transparent !important;
+}
+.stark-chalk--solid-bottom::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: var(--stark-stroke-w, 2px) solid transparent;
+  border-bottom-color: var(--stark-stroke-c, var(--border-strong));
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+html, body {
+  background: var(--surface-canvas);
+  color: var(--fg-1);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Paper grain — optional overlay class for canvases that want texture */
+.stark-grain {
+  position: relative;
+}
+.stark-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.06 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}

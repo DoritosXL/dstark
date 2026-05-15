@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:24px 32px; background: var(--surface-canvas); display:flex; gap: 28px; align-items: center; justify-content: space-around; }
+  .item { display:flex; flex-direction: column; align-items: center; gap: 10px; }
+  .box { width: 80px; height: 80px; background: var(--surface-raised); }
+  .num { font: 700 14px/1 var(--font-sans); color: var(--fg-1); }
+  .lab { font: 500 10px/1 var(--font-mono); color: var(--fg-3); text-transform: uppercase; letter-spacing: var(--tracking-caps); }
+</style>
+</head>
+<body>
+  <svg style="position:absolute;width:0;height:0" aria-hidden="true"><defs><filter id="stark-chalk-soft" x="0%" y="0%" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.25" numOctaves="2" seed="3" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3 0 0 0 -0.4" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter><filter id="stark-chalk" x="0%" y="0%" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.22" numOctaves="2" seed="3" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.5 0 0 0 -0.7" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter><filter id="stark-chalk-strong" x="0%" y="0%" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.20" numOctaves="2" seed="3" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  5 0 0 0 -1.6" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter></defs></svg>
+  <div class="item"><div class="box stark-chalk" style="border-radius:3px"></div><div class="num">3px</div><div class="lab">xs</div></div>
+  <div class="item"><div class="box stark-chalk" style="border-radius:6px"></div><div class="num">6px</div><div class="lab">sm · default</div></div>
+  <div class="item"><div class="box stark-chalk" style="border-radius:10px"></div><div class="num">10px</div><div class="lab">md · cards</div></div>
+  <div class="item"><div class="box stark-chalk" style="border-radius:16px"></div><div class="num">16px</div><div class="lab">lg</div></div>
+  <div class="item"><div class="box stark-chalk" style="border-radius:999px"></div><div class="num">∞</div><div class="lab">pill</div></div>
+</body>
+</html>

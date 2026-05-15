@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+- **Nunito** — sans, body, UI. Variable 200–1000.
+- **Lora** — serif, italic ledes and display moments. Variable 400–700.
+- **JetBrains Mono** — code.
+
+export const Row = ({ label, spec, children }) => (
+  <div style={{
+    display: 'grid',
+    gridTemplateColumns: '120px 160px 1fr',
+    alignItems: 'baseline',
+    gap: 24,
+    padding: '16px 0',
+    borderTop: '1px solid var(--border-hairline)',
+  }}>
+    <div className="stark-meta">{label}</div>
+    <div style={{ font: '500 11px/1 var(--font-mono)', color: 'var(--fg-3)' }}>{spec}</div>
+    <div>{children}</div>
+  </div>
+);
+
+<div className="stark-display" style={{ marginBottom: 8 }}>Stark.</div>
+<div className="stark-lede" style={{ marginBottom: 32, maxWidth: 540 }}>
+  Nunito for everything, Lora for the moments that ask for warmth.
+</div>
+
+<Row label="Display" spec="Lora · 72 · 800"><span className="stark-display" style={{ fontSize: 56 }}>The chalky truth.</span></Row>
+<Row label="H1" spec="Nunito · 48 · 800"><span className="stark-h1" style={{ fontSize: 40 }}>Section heading</span></Row>
+<Row label="H2" spec="Nunito · 36 · 800"><span className="stark-h2" style={{ fontSize: 30 }}>Sub-section</span></Row>
+<Row label="H3" spec="Nunito · 24 · 700"><span className="stark-h3">Smaller heading</span></Row>
+<Row label="Lede" spec="Lora italic · 20 · 500"><span className="stark-lede">Italic serif for the editorial moment.</span></Row>
+<Row label="Body" spec="Nunito · 16 · 500"><span className="stark-body">Body text rests at 16 / 1.65 for comfortable reading.</span></Row>
+<Row label="Small" spec="Nunito · 14 · 400"><span className="stark-body-sm">Helper text, captions.</span></Row>
+<Row label="Meta" spec="Nunito · 12 · 500 caps"><span className="stark-meta">Eyebrows · tags · labels</span></Row>
+<Row label="Code" spec="JetBrains Mono"><span className="stark-code">var(--brand)</span></Row>
+
+## Rules
+
+- Default weights: **800** for display / H1 / H2, **700** for H3, **500** for body. Nothing reads thin.
+- Sentence case everywhere. Title Case only for proper nouns and the wordmark.
+- No trailing periods on labels or buttons. Periods on full body sentences only.
+- Emoji: not in core UI. Allowed in user-generated content.

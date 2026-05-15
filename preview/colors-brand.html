@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:20px 24px; background: var(--surface-canvas); display:flex; gap: 16px; align-items: center; }
+  .hero { flex: 1; height: 110px; border-radius: var(--radius-md); background: var(--brand); color: var(--on-brand); padding: 16px 20px; display:flex; flex-direction: column; justify-content: space-between; }ction: column; justify-content: space-between; }
+  .hero .nm { font: 700 22px/1 var(--font-sans); letter-spacing: -0.02em; }
+  .hero .hx { font: 500 12px/1 var(--font-mono); opacity: .85; }
+  .ramp { display:flex; flex-direction: column; gap: 6px; width: 200px; }
+  .sw { display:flex; align-items: center; gap: 10px; }
+  .chip { width: 36px; height: 24px; border-radius: var(--radius-xs); --stark-stroke-w: 1.5px; }
+  .lbl { font: 500 11px/1 var(--font-mono); color: var(--fg-2); }
+</style>
+</head>
+<body>
+  <svg style="position:absolute;width:0;height:0" aria-hidden="true"><defs><filter id="stark-chalk-soft" x="0%" y="0%" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.25" numOctaves="2" seed="3" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3 0 0 0 -0.4" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter><filter id="stark-chalk" x="0%" y="0%" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.22" numOctaves="2" seed="3" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.5 0 0 0 -0.7" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter><filter id="stark-chalk-strong" x="0%" y="0%" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.20" numOctaves="2" seed="3" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  5 0 0 0 -1.6" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter></defs></svg>
+  <div class="hero stark-chalk stark-chalk--soft">
+    <div class="nm">Stark Blue</div>
+    <div class="hx">#1F6FEB · brand</div>
+  </div>
+  <div class="ramp">
+    <div class="sw"><div class="chip stark-chalk stark-chalk--soft" style="background: var(--stark-blue-50)"></div><div class="lbl">50 · #EAF2FF</div></div>
+    <div class="sw"><div class="chip stark-chalk stark-chalk--soft" style="background: var(--stark-blue-100)"></div><div class="lbl">100 · #CCDFFF</div></div>
+    <div class="sw"><div class="chip stark-chalk stark-chalk--soft" style="background: var(--stark-blue-300)"></div><div class="lbl">300 · #6FA4FF</div></div>
+    <div class="sw"><div class="chip stark-chalk stark-chalk--soft" style="background: var(--stark-blue-500)"></div><div class="lbl">500 · #1F6FEB</div></div>
+    <div class="sw"><div class="chip stark-chalk stark-chalk--soft" style="background: var(--stark-blue-600)"></div><div class="lbl">600 · #1858C7</div></div>
+    <div class="sw"><div class="chip stark-chalk stark-chalk--soft" style="background: var(--stark-blue-700)"></div><div class="lbl">700 · #11448F</div></div>
+  </div>
+</body>
+</html>

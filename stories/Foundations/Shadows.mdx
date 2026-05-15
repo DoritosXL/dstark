@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Shadows" />
+
+# Shadows
+
+Two layers compose every elevation: a **press line** (the dark underline) plus
+a soft **ambient drop**. Semi-transparent ink so the line tints into the
+button's color instead of slamming under it as pure black.
+
+export const Box = ({ shadow, y, label, sub, chalk = 'stark-chalk stark-chalk--solid-bottom' }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14 }}>
+    <div
+      className={chalk}
+      style={{
+        width: 160,
+        height: 84,
+        background: 'var(--surface-raised)',
+        borderRadius: 'var(--radius-md)',
+        boxShadow: shadow,
+        transform: y ? `translateY(${y}px)` : undefined,
+      }}
+    />
+    <div style={{ font: '600 13px/1 var(--font-sans)', color: 'var(--fg-1)' }}>{label}</div>
+    <div style={{ font: '500 10px/1 var(--font-mono)', color: 'var(--fg-3)', textTransform: 'uppercase', letterSpacing: 'var(--tracking-caps)' }}>{sub}</div>
+  </div>
+);
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 36, padding: '40px 0' }}>
+  <Box shadow="var(--shadow-button)"       label="Button rest"  sub="press-2 + ambient-1" />
+  <Box shadow="var(--shadow-button-hover)" label="Button hover" sub="press-2 + ambient-2" />
+  <Box shadow="var(--shadow-button-press)" y={2} label="Button press" sub="inset · no underline" chalk="stark-chalk" />
+  <Box shadow="var(--shadow-card)"         label="Card"         sub="ambient only"        chalk="stark-chalk" />
+</div>
+
+## Token list
+
+| Token | What |
+|---|---|
+| `--shadow-press-1/2/3` | Three depths of the dark underline. Semi-transparent. |
+| `--shadow-ambient-1/2/3` | Paired soft drop shadows. |
+| `--shadow-button` | `press-2 + ambient-1` — composed default. |
+| `--shadow-button-hover` | `press-2 + ambient-2` — color shifts but no transform. |
+| `--shadow-button-press` | Inset top + tiny residual line — pairs with `translateY(2px)`. |
+| `--shadow-card` | Ambient only. No press line. |
+| `--shadow-focus` | Yellow highlighter ring (3 px, 55% alpha). |
+
+## When solid-bottom
+
+When an element has a **hard underline shadow** (button press-line), apply
+`.stark-chalk--solid-bottom` alongside `.stark-chalk`. The chalky bottom edge
+is masked solid so it meets the shadow line cleanly. Cards and other surfaces
+with only an ambient drop **don't** need this — the ambient is too gentle to
+compete with the pencil edge.

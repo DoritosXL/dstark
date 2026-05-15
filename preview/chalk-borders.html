@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body {
+    margin: 0;
+    padding: 20px 28px;
+    background: var(--surface-canvas);
+    font-family: var(--font-sans);
+    color: var(--fg-1);
+  }
+  .wrap {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 36px;
+    align-items: center;
+  }
+  .samples {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    align-items: end;
+  }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .box {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--surface-raised);
+    border-radius: var(--radius-md);
+  }
+  .box--solid {
+    /* For the "None" demo — explicit solid border, no chalk class. */
+    border: 2px solid var(--border-strong);
+  }
+  .lab { font: 600 11px/1 var(--font-sans); color: var(--fg-1); }
+  .sub { font: 500 10px/1 var(--font-mono); color: var(--fg-3); text-transform: uppercase; letter-spacing: var(--tracking-caps); }
+
+  .ctrl {
+    width: 220px;
+    background: var(--surface-raised);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    --stark-stroke-w: 1.5px;
+  }
+  .ctrl h4 { margin: 0; font: 700 13px/1 var(--font-sans); color: var(--fg-1); }
+  .ctrl .meta { font: 500 10px/1 var(--font-mono); color: var(--fg-3); text-transform: uppercase; letter-spacing: var(--tracking-caps); }
+  .live {
+    width: 100%;
+    height: 70px;
+    background: var(--surface-canvas);
+    border-radius: var(--radius-sm);
+  }
+  input[type="range"] {
+    width: 100%;
+    accent-color: var(--brand);
+  }
+  .val {
+    font: 700 13px/1 var(--font-mono);
+    color: var(--brand-press);
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+  <svg style="position:absolute;width:0;height:0" aria-hidden="true"><defs><filter id="stark-chalk-soft" x="0%" y="0%" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.25" numOctaves="2" seed="3" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3 0 0 0 -0.4" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter><filter id="stark-chalk" x="0%" y="0%" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.22" numOctaves="2" seed="3" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.5 0 0 0 -0.7" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter><filter id="stark-chalk-strong" x="0%" y="0%" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.20" numOctaves="2" seed="3" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  5 0 0 0 -1.6" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter><filter id="stark-chalk-live" x="0%" y="0%" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.22" numOctaves="2" seed="3" result="noise"/><feColorMatrix id="live-matrix" in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.5 0 0 0 -0.7" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter></defs></svg>
+
+  <div class="wrap">
+    <div class="samples">
+      <div class="item">
+        <div class="box box--solid"></div>
+        <div class="lab">None</div><div class="sub">solid</div>
+      </div>
+      <div class="item">
+        <div class="box stark-chalk stark-chalk--soft"></div>
+        <div class="lab">Soft</div><div class="sub">~10% fade</div>
+      </div>
+      <div class="item">
+        <div class="box stark-chalk"></div>
+        <div class="lab">Default</div><div class="sub">~25% fade</div>
+      </div>
+      <div class="item">
+        <div class="box stark-chalk stark-chalk--strong"></div>
+        <div class="lab">Strong</div><div class="sub">~50% fade</div>
+      </div>
+    </div>
+
+    <div class="ctrl stark-chalk">
+      <h4>Try a fade</h4>
+      <div class="meta">Drag to preview</div>
+      <div class="live stark-chalk" id="liveBox" style="--stark-chalk-filter: url(#stark-chalk-live);"></div>
+      <input id="slider" type="range" min="0" max="100" value="25"/>
+      <div class="val"><span id="valOut">25</span>% fade</div>
+    </div>
+  </div>
+
+  <script>
+    const slider = document.getElementById('slider');
+    const matrix = document.getElementById('live-matrix');
+    const valOut = document.getElementById('valOut');
+    function update(pct) {
+      const t = pct / 100;
+      const contrast = (1.4 + t * 1.6).toFixed(2);
+      const bias = (0.15 - t * 1.20).toFixed(2);
+      matrix.setAttribute('values',
+        `0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  ${contrast} 0 0 0 ${bias}`
+      );
+      valOut.textContent = pct;
+    }
+    slider.addEventListener('input', e => update(+e.target.value));
+    update(+slider.value);
+  </script>
+</body>
+</html>

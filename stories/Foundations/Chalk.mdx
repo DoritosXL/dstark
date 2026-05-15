@@ -1,0 +1,52 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Chalk border" />
+
+# Chalk border
+
+Stark's signature. A subtle SVG noise filter modulates the **alpha** along
+every dark border — the line stays exactly where it was drawn, but parts of
+it become transparent. Reads like a pencil pressed unevenly to paper.
+
+## The three rules
+
+1. **Strokes only.** Borders, dividers, framing. Never on text or fills.
+2. **Solid bottom when shadowed.** Surfaces with a hard underline shadow
+   (button press-line) get `.stark-chalk--solid-bottom` so the chalky openings
+   don't compete with the shadow.
+3. **Three intensities.** Same noise pattern, different alpha curves so the
+   rhythm is consistent across the system.
+
+## Intensities
+
+export const Box = ({ cls = '', label, sub }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+    <div className={cls} style={{
+      width: 160,
+      aspectRatio: '16 / 9',
+      background: 'var(--surface-raised)',
+      borderRadius: 'var(--radius-md)',
+    }}/>
+    <div style={{ font: '600 12px/1 var(--font-sans)', color: 'var(--fg-1)' }}>{label}</div>
+    <div style={{ font: '500 10px/1 var(--font-mono)', color: 'var(--fg-3)', textTransform: 'uppercase', letterSpacing: 'var(--tracking-caps)' }}>{sub}</div>
+  </div>
+);
+
+<div style={{ display: 'flex', gap: 28, padding: '32px 0', alignItems: 'end' }}>
+  <Box label="Soft" sub="~10% fade · small UI" cls="stark-chalk stark-chalk--soft"/>
+  <Box label="Default" sub="~17% fade · everywhere" cls="stark-chalk"/>
+  <Box label="Strong" sub="~32% fade · display only" cls="stark-chalk stark-chalk--strong"/>
+</div>
+
+## Customizing
+
+Each chalky element accepts:
+
+- `--stark-stroke-w` — stroke width (default `2px`)
+- `--stark-stroke-c` — stroke color (default `var(--border-strong)`)
+- `--stark-chalk-filter` — filter ID (default `url(#stark-chalk)`)
+
+## Don't forget
+
+`<ChalkDefs />` must be mounted somewhere in the React tree, or the filter
+references resolve to nothing and borders fall back to plain solid lines.

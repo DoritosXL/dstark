@@ -1,0 +1,9 @@
+/* dstark — bundled stylesheet
+ * Reuses the canonical token + component CSS at the repo root so a single
+ * source of truth feeds both the design-system folder (preview/) and the
+ * shipped npm package.
+ *
+ * Consumers: `import 'dstark/styles'`
+ */
+@import '../colors_and_type.css';
+@import '../components.css';

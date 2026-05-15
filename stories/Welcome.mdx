@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/blocks';
+import { Logo } from '../src/components/Logo';
+
+<Meta title="Welcome" />
+
+<div style={{ display: 'flex', alignItems: 'flex-end', gap: 24, marginBottom: 48 }}>
+  <Logo height={80} />
+  <div style={{
+    paddingBottom: 12,
+    fontFamily: 'var(--font-mono)',
+    fontSize: 11,
+    color: 'var(--fg-3)',
+    textTransform: 'uppercase',
+    letterSpacing: 'var(--tracking-caps)',
+  }}>v0.1 · design system</div>
+</div>
+
+<p className="stark-lede" style={{ maxWidth: 620, marginBottom: 40 }}>
+  Chalky. Clean. Clicky. A generic UI vocabulary you can drop onto any product.
+</p>
+
+## Install
+
+```bash
+npm install dstark
+```
+
+## Use
+
+```tsx
+import 'dstark/styles';
+import { ChalkDefs, Button, Card } from 'dstark';
+
+export default function App() {
+  return (
+    <>
+      <ChalkDefs />
+      <Button>Press me</Button>
+    </>
+  );
+}
+```
+
+Mount `<ChalkDefs />` **once** near the root of your app. Without it, the
+pencil borders fall back to plain solid strokes.
+
+## What's here
+
+- **Foundations** — colors, typography, spacing, shadows, the chalk filter
+- **Components** — Button, Card, Input, Badge, Tabs
+- **Patterns** — realistic compositions of the above
+
+## The three rules
+
+1. **Pencil on strokes only.** Borders, dividers, framing. Never on text or fills.
+2. **Solid bottom when shadowed.** Buttons get a solid bottom edge so the chalky pencil openings don't compete with the press-shadow line.
+3. **Hover is a color shift, press is the click.** No transform on hover; the button only lifts visually on `:active`.

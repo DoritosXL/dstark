@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin:0; padding:32px; background: var(--surface-canvas); display:flex; gap: 36px; align-items: center; justify-content: space-around; }
+  .item { display:flex; flex-direction: column; align-items: center; gap: 14px; }
+  .box { width: 110px; height: 60px; background: var(--surface-raised); border-radius: var(--radius-sm); }
+  .lab { font: 600 12px/1 var(--font-sans); color: var(--fg-1); }
+  .sub { font: 500 10px/1 var(--font-mono); color: var(--fg-3); text-transform: uppercase; letter-spacing: var(--tracking-caps); }
+</style>
+</head>
+<body>
+  <svg style="position:absolute;width:0;height:0" aria-hidden="true"><defs><filter id="stark-chalk-soft" x="0%" y="0%" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.25" numOctaves="2" seed="3" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3 0 0 0 -0.4" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter><filter id="stark-chalk" x="0%" y="0%" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.22" numOctaves="2" seed="3" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  3.5 0 0 0 -0.7" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter><filter id="stark-chalk-strong" x="0%" y="0%" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.20" numOctaves="2" seed="3" result="noise"/><feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  5 0 0 0 -1.6" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter></defs></svg>
+  <div class="item">
+    <div class="box stark-chalk stark-chalk--solid-bottom" style="box-shadow: var(--shadow-button)"></div>
+    <div class="lab">Button rest</div>
+    <div class="sub">press-2 + ambient-1</div>
+  </div>
+  <div class="item">
+    <div class="box stark-chalk stark-chalk--solid-bottom" style="box-shadow: var(--shadow-button-hover)"></div>
+    <div class="lab">Button hover</div>
+    <div class="sub">press-3 + ambient-2</div>
+  </div>
+  <div class="item">
+    <div class="box stark-chalk" style="box-shadow: var(--shadow-button-press); transform: translateY(2px)"></div>
+    <div class="lab">Button press</div>
+    <div class="sub">press-1 inset</div>
+  </div>
+  <div class="item">
+    <div class="box stark-chalk" style="box-shadow: var(--shadow-card)"></div>
+    <div class="lab">Card</div>
+    <div class="sub">ambient only</div>
+  </div>
+</body>
+</html>

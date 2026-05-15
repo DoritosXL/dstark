@@ -1,0 +1,67 @@
+{
+  "name": "dstark",
+  "version": "0.1.0",
+  "description": "Stark — a chalky, clean, Apple-leaning React component library with pencil-edge borders and skeuomorphic press shadows.",
+  "type": "module",
+  "main": "./dist/dstark.cjs",
+  "module": "./dist/dstark.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/dstark.js",
+      "require": "./dist/dstark.cjs"
+    },
+    "./styles": "./dist/dstark.css",
+    "./styles.css": "./dist/dstark.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "tsc -p tsconfig.build.json && vite build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "react",
+    "design-system",
+    "ui",
+    "components",
+    "chalky",
+    "pencil",
+    "neumorphism"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YOUR_HANDLE/dstark.git"
+  },
+  "homepage": "https://dstark.vercel.app",
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.4.0",
+    "@storybook/addon-interactions": "^8.4.0",
+    "@storybook/addon-links": "^8.4.0",
+    "@storybook/blocks": "^8.4.0",
+    "@storybook/react": "^8.4.0",
+    "@storybook/react-vite": "^8.4.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "storybook": "^8.4.0",
+    "typescript": "^5.4.0",
+    "vite": "^5.4.0",
+    "vite-plugin-dts": "^4.3.0"
+  }
+}

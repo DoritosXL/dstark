@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { margin: 0; padding: 24px 32px; background: var(--surface-canvas); }
+  .row { display: grid; grid-template-columns: 80px 90px 1fr; align-items: baseline; gap: 16px; padding: 6px 0; }
+  .row + .row { border-top: 1px solid var(--border-hairline); }
+  .lab { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); text-transform: uppercase; letter-spacing: var(--tracking-caps); }
+  .px { font-family: var(--font-mono); font-size: 11px; color: var(--fg-4); }
+  .sample { color: var(--fg-1); }
+</style>
+</head>
+<body>
+  <div class="row"><div class="lab">h1</div><div class="px">48 · 700 sans</div><div class="sample stark-h1" style="font-size:32px">The chalky truth</div></div>
+  <div class="row"><div class="lab">h2</div><div class="px">36 · 700 sans</div><div class="sample stark-h2" style="font-size:26px">Section header</div></div>
+  <div class="row"><div class="lab">h3</div><div class="px">24 · 600 sans</div><div class="sample stark-h3" style="font-size:20px">Sub-section</div></div>
+  <div class="row"><div class="lab">body</div><div class="px">16 · 400 sans</div><div class="sample stark-body" style="font-size:15px">Body text rests at 16 / 1.65 for comfortable reading.</div></div>
+  <div class="row"><div class="lab">small</div><div class="px">14 · 400 sans</div><div class="sample stark-body-sm">Secondary text and helper copy.</div></div>
+  <div class="row"><div class="lab">meta</div><div class="px">12 · 500 caps</div><div class="sample stark-meta">Labels, eyebrows, tags</div></div>
+  <div class="row"><div class="lab">code</div><div class="px">mono</div><div><span class="stark-code">var(--brand)</span></div></div>
+</body>
+</html>
