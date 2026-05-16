@@ -40,7 +40,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YOUR_HANDLE/dstark.git"
+    "url": "git+https://github.com/DoritosXL/dstark.git"
   },
   "homepage": "https://dstark.vercel.app",
   "peerDependencies": {
