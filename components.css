@@ -121,6 +121,15 @@
   --btn-bg-press: var(--stark-red-600);
 }
 
+/* Dark mode: secondary/ghost press uses a raw light paper value in light mode.
+   Override to a dark sunken surface so clicking doesn't flash the button white. */
+@media (prefers-color-scheme: dark) {
+  .stk-btn--secondary { --btn-bg-press: var(--surface-sunken); }
+  .stk-btn--ghost     { --btn-bg-press: var(--surface-sunken); }
+}
+[data-theme="dark"] .stk-btn--secondary { --btn-bg-press: var(--surface-sunken); }
+[data-theme="dark"] .stk-btn--ghost     { --btn-bg-press: var(--surface-sunken); }
+
 /* Sizes */
 .stk-btn--sm { font-size: var(--size-14); padding: 8px 12px; gap: 6px; }
 .stk-btn--lg { font-size: var(--size-18); padding: 16px 24px; gap: 10px; }
@@ -279,6 +288,16 @@
 .stk-badge--success { background: color-mix(in oklab, var(--success) 18%, var(--surface-raised)); color: var(--stark-green-600); }
 .stk-badge--danger  { background: color-mix(in oklab, var(--danger) 18%, var(--surface-raised));  color: var(--stark-red-600); }
 .stk-badge--warning { background: color-mix(in oklab, var(--warning) 22%, var(--surface-raised)); color: var(--stark-orange-600); }
+
+/* Dark mode: --brand-soft and --brand-press are both dark navy in dark mode,
+   making text invisible. Flip brand badge to solid brand + white text instead. */
+@media (prefers-color-scheme: dark) {
+  .stk-badge--brand { background: var(--brand); color: var(--on-brand); }
+}
+[data-theme="dark"] .stk-badge--brand {
+  background: var(--brand);
+  color: var(--on-brand);
+}
 
 /* ============================================================
    TABS

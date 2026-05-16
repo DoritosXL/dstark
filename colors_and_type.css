@@ -30,6 +30,11 @@
   --stark-paper-raised: #FFFDF8;   /* raised card surface */
   --stark-paper-deep:   #E8E2D4;   /* darkest paper, for dividers */
 
+  /* Chalkboard — dark mode ground. Dark-first, green is a quiet undertone. */
+  --stark-chalk-900: #131917;   /* sunken — deepest */
+  --stark-chalk-800: #1B2421;   /* canvas — main bg */
+  --stark-chalk-700: #232E2A;   /* raised — elevated surface */
+
   /* Brand accent — Stark blue (Lean SF Blue, cooled) */
   --stark-blue-50:  #EAF2FF;
   --stark-blue-100: #CCDFFF;
@@ -157,11 +162,11 @@
      SHADOWS — the skeuomorphic inset-underline system
      ============================================================ */
 
-  /* The signature: a soft dark line under the button. Semi-transparent
-     so it relates to the button's color, not a hard black slam. */
-  --shadow-press-1: 0 1px 0 0 rgba(19,19,23,0.78);
-  --shadow-press-2: 0 2px 0 0 rgba(19,19,23,0.82);
-  --shadow-press-3: 0 3px 0 0 rgba(19,19,23,0.86);
+  /* The signature underline — matches --border-strong so it reads as the same
+     ink/chalk that draws the border. Both themes inherit the right color. */
+  --shadow-press-1: 0 1px 0 0 var(--border-strong);
+  --shadow-press-2: 0 2px 0 0 var(--border-strong);
+  --shadow-press-3: 0 3px 0 0 var(--border-strong);
 
   /* Soft ambient drops, paired with the press line for refinement */
   --shadow-ambient-1: 0 2px 6px rgba(19,19,23,0.06);
@@ -198,6 +203,107 @@
   --dur-fast:   120ms;
   --dur-base:   180ms;
   --dur-slow:   320ms;
+}
+
+/* ============================================================
+   DARK MODE — token remapping
+   Dark ink ground with warm-paper text. The chalk borders flip
+   to light (ink on blackboard) automatically because they read
+   from --border-strong.
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-canvas:  var(--stark-chalk-800);
+    --surface-raised:  var(--stark-chalk-700);
+    --surface-sunken:  var(--stark-chalk-900);
+    --surface-inverse: var(--stark-paper);
+
+    --fg-1:          #EAE6D9;
+    --fg-2:          #C4BEAE;
+    --fg-3:          #8A9E93;
+    --fg-4:          #5E7A6A;
+    --fg-on-inverse: var(--stark-ink-900);
+
+    --border-strong:   #E8E4D9;
+    --border-medium:   #BDB8A8;
+    --border-soft:     #5A7265;
+    --border-hairline: #3A5445;
+
+    --brand-soft: var(--stark-blue-700);
+
+    /* Recolor the press-line from black to chalk-white so the 3D bottom-ledge
+       effect is preserved on the dark board without the harsh black stripe. */
+    --shadow-press-1: 0 1px 0 0 var(--border-strong);
+    --shadow-press-2: 0 2px 0 0 var(--border-strong);
+    --shadow-press-3: 0 3px 0 0 var(--border-strong);
+    --shadow-button:       var(--shadow-press-2), var(--shadow-ambient-1);
+    --shadow-button-hover: var(--shadow-press-2), var(--shadow-ambient-2);
+    --shadow-button-press: inset 0 1px 0 0 rgba(0,0,0,0.3), 0 1px 0 0 var(--border-strong);
+    --shadow-card:         0 1px 0 0 rgba(0,0,0,0.35), 0 2px 12px rgba(0,0,0,0.30);
+    --shadow-card-hover:   0 2px 0 0 rgba(0,0,0,0.45), 0 12px 32px rgba(0,0,0,0.45);
+  }
+}
+
+/* Explicit dark — for programmatic toggle (e.g. Storybook side-by-side) */
+[data-theme="dark"] {
+  --surface-canvas:  var(--stark-chalk-800);
+  --surface-raised:  var(--stark-chalk-700);
+  --surface-sunken:  var(--stark-chalk-900);
+  --surface-inverse: var(--stark-paper);
+
+  --fg-1:          #EAE6D9;
+  --fg-2:          #C4BEAE;
+  --fg-3:          #8A9E93;
+  --fg-4:          #5E7A6A;
+  --fg-on-inverse: var(--stark-ink-900);
+
+  --border-strong:   #E8E4D9;
+  --border-medium:   #BDB8A8;
+  --border-soft:     #5A7265;
+  --border-hairline: #3A5445;
+
+  --brand-soft: var(--stark-blue-700);
+
+  --shadow-press-1: 0 1px 0 0 var(--border-strong);
+  --shadow-press-2: 0 2px 0 0 var(--border-strong);
+  --shadow-press-3: 0 3px 0 0 var(--border-strong);
+  --shadow-button:       var(--shadow-press-2), var(--shadow-ambient-1);
+  --shadow-button-hover: var(--shadow-press-2), var(--shadow-ambient-2);
+  --shadow-button-press: inset 0 1px 0 0 rgba(0,0,0,0.3), 0 1px 0 0 var(--border-strong);
+  --shadow-card:         0 1px 0 0 rgba(0,0,0,0.35), 0 2px 12px rgba(0,0,0,0.30);
+  --shadow-card-hover:   0 2px 0 0 rgba(0,0,0,0.45), 0 12px 32px rgba(0,0,0,0.45);
+}
+
+/* Explicit light — forces light tokens even when OS is dark */
+[data-theme="light"] {
+  --surface-canvas:  var(--stark-paper);
+  --surface-raised:  var(--stark-paper-raised);
+  --surface-sunken:  var(--stark-paper-sunken);
+  --surface-inverse: var(--stark-ink-900);
+
+  --fg-1:          var(--stark-ink-900);
+  --fg-2:          var(--stark-ink-700);
+  --fg-3:          var(--stark-ink-500);
+  --fg-4:          var(--stark-ink-400);
+  --fg-on-inverse: var(--stark-paper);
+
+  --border-strong:   var(--stark-ink-900);
+  --border-medium:   var(--stark-ink-700);
+  --border-soft:     var(--stark-ink-300);
+  --border-hairline: var(--stark-paper-deep);
+
+  --brand-soft: var(--stark-blue-50);
+
+  /* Press-lines use var(--border-strong) in :root — just need to ensure
+     --shadow-button composite is explicitly restored here. */
+  --shadow-press-1: 0 1px 0 0 var(--border-strong);
+  --shadow-press-2: 0 2px 0 0 var(--border-strong);
+  --shadow-press-3: 0 3px 0 0 var(--border-strong);
+  --shadow-button:       var(--shadow-press-2), var(--shadow-ambient-1);
+  --shadow-button-hover: var(--shadow-press-2), var(--shadow-ambient-2);
+  --shadow-button-press: inset 0 1px 0 0 rgba(19,19,23,0.5), 0 1px 0 0 rgba(19,19,23,0.7);
+  --shadow-card:         0 1px 0 0 var(--stark-ink-200), 0 2px 8px rgba(19,19,23,0.04);
+  --shadow-card-hover:   0 2px 0 0 var(--stark-ink-300), 0 10px 28px rgba(19,19,23,0.08);
 }
 
 /* ============================================================
