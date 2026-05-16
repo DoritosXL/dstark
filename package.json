@@ -1,6 +1,6 @@
 {
   "name": "dstark",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Stark — a chalky, clean, Apple-leaning React component library with pencil-edge borders and skeuomorphic press shadows.",
   "type": "module",
   "main": "./dist/dstark.cjs",

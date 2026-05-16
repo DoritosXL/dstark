@@ -135,6 +135,8 @@
    ============================================================ */
 .stk-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   background: var(--surface-raised);
   border: none;
   border-radius: var(--radius-md);
