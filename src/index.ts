@@ -37,5 +37,11 @@ export type { BadgeProps, BadgeVariant } from './components/Badge';
 export { Tabs } from './components/Tabs';
 export type { TabsProps, TabOption } from './components/Tabs';
 
+export { Carousel } from './components/Carousel';
+export type { CarouselProps } from './components/Carousel';
+
+export { Timeline } from './components/Timeline';
+export type { TimelineProps, TimelineStop } from './components/Timeline';
+
 export { Logo } from './components/Logo';
 export type { LogoProps } from './components/Logo';

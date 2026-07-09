@@ -38,6 +38,8 @@ That's it. `<ChalkDefs />` mounts the SVG filter defs that power the pencil bord
 | `<Input>` | Labeled, hinted, validated |
 | `<Badge>` | Default + 4 semantic variants |
 | `<Tabs>` | Segmented control |
+| `<Carousel>` | One child at a time · header label + ghost arrows · controlled or uncontrolled |
+| `<Timeline>` | Horizontal history stops · pairs with `<Carousel>` |
 | `<Logo>` | Wordmark + mark, color-customizable |
 | `<ChalkDefs>` | The filter defs. Mount once. |
 | CSS tokens | `--brand`, `--fg-1`, `--space-4`, `--shadow-button`, etc. |
