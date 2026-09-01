@@ -78,11 +78,33 @@ Use [Conventional Commits](https://www.conventionalcommits.org/):
 - `chore: bump storybook to 8.5`
 - `docs: clarify ChalkDefs mounting requirement`
 
+## Workflow
+
+`main` is protected — direct pushes are rejected, even for admins. Work on a
+branch and open a PR:
+
+```bash
+git checkout -b feat/tooltip-component
+# ...make changes, commit with Conventional Commits...
+git push -u origin feat/tooltip-component
+gh pr create
+```
+
+No approving review is required (solo-maintained repo), but the `Typecheck
+and build` check must pass before the PR can merge. **The PR title becomes
+the commit message on `main` if you squash-merge — make sure it's a valid
+Conventional Commits message too**, since that's what release-please reads.
+
 ## Release process
 
-1. Bump the version: `yarn version --new-version 0.1.1` (creates a `v0.1.1` git tag)
-2. Push: `git push --follow-tags`
-3. **The release workflow takes over** — typechecks, builds, and publishes
+Releases are automated by **release-please** — don't bump the version or
+tag manually.
+
+1. Merge Conventional Commits (`feat:`, `fix:`, etc.) to `main` via PR as above.
+2. release-please opens/updates a `chore(main): release dstark X.Y.Z` PR
+   with the version bump and CHANGELOG entry, derived from those commits.
+3. Merge that PR when you're ready to ship. Merging it tags the release and
+   triggers the release workflow, which typechecks, builds, and publishes
    to npm using the `NPM_TOKEN` secret. Watch the run under the repo's
    Actions tab.
 
