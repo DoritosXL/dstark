@@ -43,5 +43,8 @@ export type { CarouselProps } from './components/Carousel';
 export { Timeline } from './components/Timeline';
 export type { TimelineProps, TimelineStop } from './components/Timeline';
 
+export { StoryIntro } from './components/StoryIntro';
+export type { StoryIntroProps, StoryIntroAlign } from './components/StoryIntro';
+
 export { Logo } from './components/Logo';
 export type { LogoProps } from './components/Logo';
